@@ -98,5 +98,10 @@ namespace AnimeDiseaseGame
         {
             return GetTileType().HasFlag(tileType);
         }
+
+        public void Remove()
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -27,8 +27,13 @@ namespace AnimeDiseaseGame
             _animator = GetComponent<Animator>();
             _healthComponent.OnHealthLost.AddListener(health =>
             {
-                _animator.SetTrigger("Hit");
+                if (_animator.HasParameter("Hit"))
+                    _animator.SetTrigger("Hit");
+
+                _rb.velocity = Vector2.zero;
             });
+            
+            _healthComponent.OnHealthEmpty.AddListener(() => Destroy(gameObject));
         }
 
         [KitButton()]
@@ -37,7 +42,6 @@ namespace AnimeDiseaseGame
             _asleep = false;
         }
 
-        public abstract GameObject GetTarget();
         private void Update()
         {
             if (_asleep)
@@ -73,5 +77,7 @@ namespace AnimeDiseaseGame
         }
 
         public abstract void Attack();
+        
+        public abstract GameObject GetTarget();
     }
 }

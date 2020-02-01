@@ -10,12 +10,12 @@ namespace AnimeDiseaseGame
     {
         public int DamagePerSecond = 1;
         private TimeSince _timeSinceDamage;
-        private HealthComponent _healthComponent;
+        public HealthComponent HealthComponent;
 
         protected override void Awake()
         {
             base.Awake();
-            _healthComponent = GetComponent<HealthComponent>();
+            HealthComponent = GetComponent<HealthComponent>();
             _timeSinceDamage = 0;
         }
 
@@ -27,12 +27,12 @@ namespace AnimeDiseaseGame
             }
             
             _timeSinceDamage = 0;
-            _healthComponent.Damage(DamagePerSecond);
+            HealthComponent.Damage(DamagePerSecond);
         }
 
         public void Reset()
         {
-            _healthComponent.Heal(_healthComponent.MaximumHealth);
+            HealthComponent.Heal(HealthComponent.MaximumHealth);
         }
     }
 }

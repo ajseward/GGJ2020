@@ -12,6 +12,9 @@ namespace AnimeDiseaseGame
     public class DungeonGenerator : SingletonBehaviour<DungeonGenerator>
     {
         public List<DungeonRoot> DungeonTiles = new List<DungeonRoot>();
+        
+        [HideInInspector]
+        public List<DungeonRoot> ActiveTiles = new List<DungeonRoot>();
         public DungeonRoot RootTile;
         private TileType _regressDirection;
 
@@ -47,6 +50,19 @@ namespace AnimeDiseaseGame
                     }
                 }
             }*/
+        }
+
+        public void WipeMap()
+        {
+            var queue = new Queue<DungeonRoot>();
+            ActiveTiles.ForEach(queue.Enqueue);
+
+            while (queue.Count > 0)
+            {
+                var tile = queue.Dequeue();
+
+                tile.Remove();
+            }
         }
 
         private void GenerateStartTile()

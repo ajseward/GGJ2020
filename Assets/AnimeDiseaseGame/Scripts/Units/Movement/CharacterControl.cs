@@ -1,4 +1,5 @@
 ﻿using System;
+using GameJamStarterKit.HealthSystem;
 using GameJamStarterKit.Modifiers;
 using UnityEngine;
 
@@ -19,6 +20,11 @@ namespace AnimeDiseaseGame
         {
             _rb = GetComponent<Rigidbody2D>();
             MoveSpeed = DefaultMoveSpeed;
+        }
+
+        private void Start()
+        {
+            GameController.Instance.RegisterCharacterHealth(GetComponent<HealthComponent>());
         }
 
         private void Update()
