@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GameJamStarterKit;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
 
 namespace AnimeDiseaseGame
@@ -12,6 +13,7 @@ namespace AnimeDiseaseGame
     {
         public List<DungeonRoot> DungeonTiles = new List<DungeonRoot>();
         public DungeonRoot RootTile;
+        private TileType _regressDirection;
 
         private void Start()
         {
@@ -54,21 +56,23 @@ namespace AnimeDiseaseGame
             if (RootTile.UpExit)
             {
                 GenerateTile(TileType.Up, RootTile.UpExit);
+                _regressDirection = TileType.Down;
             }
-
-            if (RootTile.DownExit)
+            else if (RootTile.DownExit)
             {
                 GenerateTile(TileType.Down, RootTile.DownExit);
+                _regressDirection = TileType.Up;
             }
-
-            if (RootTile.LeftExit)
+            else if (RootTile.LeftExit)
             {
                 GenerateTile(TileType.Left, RootTile.LeftExit);
+                _regressDirection = TileType.Right;
             }
 
-            if (RootTile.RightExit)
+            else if (RootTile.RightExit)
             {
                 GenerateTile(TileType.Right, RootTile.RightExit);
+                _regressDirection = TileType.Left;
             }
         }
 
@@ -76,8 +80,6 @@ namespace AnimeDiseaseGame
         {
             if (position.childCount > 0)
                 return null;
-            
-            var oppositeDir = DungeonUtility.GetOppositeTile(direction);
             
             var tiles = DungeonTiles.Where(dt => dt.HasExit(DungeonUtility.GetOppositeTile(direction)));
 
@@ -88,6 +90,9 @@ namespace AnimeDiseaseGame
                     tiles = tiles.Where(dt => !dt.HasExit(tileType));
                 }
             }
+
+            if (!tiles.Any())
+                return null;
             
             var tile = tiles.RandomItem();
 

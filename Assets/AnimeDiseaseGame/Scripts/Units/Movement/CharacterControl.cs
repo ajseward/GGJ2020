@@ -5,25 +5,20 @@ using UnityEngine;
 namespace AnimeDiseaseGame
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Move2D : MonoBehaviour
+    public class CharacterControl : TeamMonoBehaviour
     {
         public Transform ChildRenderer;
         public ModifiableValue<float> MoveSpeed;
         [SerializeField]
         private float DefaultMoveSpeed = 6f;
+        public Weapon Weapon;
         
         private Rigidbody2D _rb;
-        private Weapon _weapon;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             MoveSpeed = DefaultMoveSpeed;
-        }
-
-        private void Start()
-        {
-            _weapon = GetComponentInChildren<Weapon>();
         }
 
         private void Update()
@@ -51,18 +46,20 @@ namespace AnimeDiseaseGame
         private void TryFireWeapon()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-                _weapon.Fire();
+                if (Weapon != null)
+                    Weapon.Fire(ChildRenderer.up);
         }
 
         public bool EquipWeapon(Weapon weapon)
         {
-            if (_weapon == null)
+            if (Weapon == null)
                 return false;
 
             var go = weapon.gameObject;
 
             go.transform.SetParent(transform, false);
-            _weapon = weapon;
+            Weapon = weapon;
+            Weapon.Team = Team;
 
             return true;
         }

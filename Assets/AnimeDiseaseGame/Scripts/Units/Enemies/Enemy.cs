@@ -1,25 +1,34 @@
 ﻿using System;
 using GameJamStarterKit;
+using GameJamStarterKit.HealthSystem;
 using UnityEngine;
 
 namespace AnimeDiseaseGame
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : TeamMonoBehaviour
     {
         public float MaxRange = 20f;
         public float MinRange = 10f;
         public float MoveSpeed = 4f;
         private bool _asleep = true;
         private Rigidbody2D _rb;
+        private HealthComponent _healthComponent;
+        private Animator _animator;
 
         private Vector2 _moveDir;
 
-        private GameObject _target;
+        protected GameObject Target;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _healthComponent = GetComponent<HealthComponent>();
+            _animator = GetComponent<Animator>();
+            _healthComponent.OnHealthLost.AddListener(health =>
+            {
+                _animator.SetTrigger("Hit");
+            });
         }
 
         [KitButton()]
@@ -27,27 +36,28 @@ namespace AnimeDiseaseGame
         {
             _asleep = false;
         }
-        
+
+        public abstract GameObject GetTarget();
         private void Update()
         {
             if (_asleep)
                 return;
 
-            if (_target == null)
+            if (Target == null)
             {
-                _target = GameObject.FindWithTag("Player");
+                Target = GetTarget();
             }
 
             var myTransform = transform;
-            myTransform.up = (Vector2)myTransform.position - (Vector2)_target.transform.position;
+            myTransform.up = (Vector2)myTransform.position.DirectionTo(Target.transform.position);
 
-            if (Vector2.Distance(myTransform.position, _target.transform.position) > MaxRange)
+            if (Vector2.Distance(myTransform.position, Target.transform.position) > MaxRange)
             {
-                _moveDir = myTransform.position.DirectionTo(_target.transform.position);
+                _moveDir = myTransform.position.DirectionTo(Target.transform.position);
             }
-            else if (Vector2.Distance(myTransform.position, _target.transform.position) < MinRange)
+            else if (Vector2.Distance(myTransform.position, Target.transform.position) < MinRange)
             {
-                _moveDir = -myTransform.position.DirectionTo(_target.transform.position);
+                _moveDir = -myTransform.position.DirectionTo(Target.transform.position);
             }
             else
             {
