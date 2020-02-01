@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.aseward.game-jam-starter-kit": "https://gitlab.com/ASeward/gamejamstarterkit.git#upm",
+    "com.johannesmp.unityscenereference": "https://github.com/starikcetin/unity-scene-reference.git#upm",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.collab-proxy": "1.2.16",
@@ -40,5 +42,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.aseward.game-jam-starter-kit": {
+      "revision": "upm",
+      "hash": "1a1b14b8d927a37bf58911be5fe1f89ecbd2e712"
+    },
+    "com.johannesmp.unityscenereference": {
+      "revision": "upm",
+      "hash": "6b3bbf3b68b23aa88de628095a4656585aaa60df"
+    }
   }
 }
