@@ -9,7 +9,7 @@ namespace AnimeDiseaseGame
         protected override void Fire_Implementation(Vector2 direction)
         {
             var hits = new RaycastHit2D[20];
-            var count = Physics2D.BoxCastNonAlloc(transform.position, Vector2.one, 0f, transform.up, hits);
+            var count = Physics2D.BoxCastNonAlloc(transform.position, Vector2.one / 2f, 0f, transform.up, hits);
 
             if (count > 0)
             {
