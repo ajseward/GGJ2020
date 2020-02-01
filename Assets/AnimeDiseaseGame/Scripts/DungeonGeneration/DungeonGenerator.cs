@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GameJamStarterKit;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace AnimeDiseaseGame
 {
@@ -14,6 +16,35 @@ namespace AnimeDiseaseGame
         private void Start()
         {
             GenerateStartTile();
+            /*for (var i = 0; i < 10; ++i)
+            {
+                var queue = new Queue<Transform>();
+                queue.Enqueue(RootTile.transform);
+                while (queue.Count > 0)
+                {
+                    var t = queue.Dequeue();
+                    foreach (Transform child in t)
+                    {
+                        queue.Enqueue(child);
+                    }
+                    
+                    var tile = t.GetComponent<DungeonRoot>();
+                    if (tile == null)
+                        continue;
+
+                    foreach (TileType tileType in Enum.GetValues(typeof(TileType)))
+                    {
+                        if (tileType == TileType.None)
+                            continue;
+                        
+                        if (tile.HasExit(tileType))
+                        {
+                            GenerateTile(tileType, tile.GetExit(tileType));
+                            yield return null;
+                        }
+                    }
+                }
+            }*/
         }
 
         private void GenerateStartTile()

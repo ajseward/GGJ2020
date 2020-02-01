@@ -73,6 +73,27 @@ namespace AnimeDiseaseGame
             transform.SetPositionAndRotation(otherSide.position - offset, transform.rotation);
         }
 
+        public Transform GetExit(TileType direction)
+        {
+            switch (direction)
+            {
+                default:
+                case TileType.None:
+                    return null;
+                case TileType.Up:
+                    return UpExit;
+                
+                case TileType.Left:
+                    return LeftExit;
+                
+                case TileType.Right:
+                    return RightExit;
+                
+                case TileType.Down:
+                    return DownExit;
+            }
+        }
+
         public bool HasExit(TileType tileType)
         {
             return GetTileType().HasFlag(tileType);
