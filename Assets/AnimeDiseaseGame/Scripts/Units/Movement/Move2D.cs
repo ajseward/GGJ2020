@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
-using AnimeDiseaseGame.InputSystem;
 using GameJamStarterKit.Modifiers;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 
 namespace AnimeDiseaseGame
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Move2D : MonoBehaviour
     {
+        public Transform ChildRenderer;
         public ModifiableValue<float> MoveSpeed;
         [SerializeField]
         private float DefaultMoveSpeed = 6f;
@@ -32,6 +29,10 @@ namespace AnimeDiseaseGame
         private void Update()
         {
             TryFireWeapon();
+        }
+
+        private void FixedUpdate()
+        {
             DoMovement();
         }
 
@@ -41,12 +42,16 @@ namespace AnimeDiseaseGame
             move = Vector2.ClampMagnitude(move, 1);
             _rb.AddForce(move, ForceMode2D.Impulse);
             _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, MoveSpeed.ModifiedValue);
+            if (ChildRenderer != null)
+            {
+                ChildRenderer.up = _rb.velocity.normalized;
+            }
         }
 
         private void TryFireWeapon()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-                Weapon.Fire(transform.up);
+                _weapon.Fire();
         }
 
         public bool EquipWeapon(Weapon weapon)
