@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SpeedUpgrade
   m_EditorClassIdentifier: 
   Description: quicc
-  Sprite: {fileID: 4884379796355138526, guid: 8febda07067468f4e911ec73547c7d75, type: 3}
+  Sprite: {fileID: 3027077354358518057, guid: 37fae90f7828abf4ba55834728e10183, type: 3}
   Multiplier: 2

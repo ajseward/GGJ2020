@@ -11,6 +11,12 @@ namespace AnimeDiseaseGame
         
         private TimeSince _timeSinceDamagedPlayer;
         public float DamageAuraInterval = 2f;
+
+        private void Start()
+        {
+            RotateTowards = false;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.HasComponent<CharacterControl>())
@@ -40,11 +46,11 @@ namespace AnimeDiseaseGame
             var coinToss = KitRandom.CoinToss();
             if (coinToss)
             {
-                BeamAttack.Fire(transform.up);
+                BeamAttack.Fire(transform.position.DirectionTo(Target.transform.position));
             }
             else
             {
-                ChargeAttack.Fire(transform.up);
+                ChargeAttack.Fire(transform.position.DirectionTo(Target.transform.position));
             }
         }
 

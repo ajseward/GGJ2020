@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BetterBetterSpeedUpgrade
   m_EditorClassIdentifier: 
   Description: dummy quicc
-  Sprite: {fileID: -8559467107966762825, guid: 8febda07067468f4e911ec73547c7d75, type: 3}
-  Multiplier: 1000
+  Sprite: {fileID: -4483788243259967816, guid: 37fae90f7828abf4ba55834728e10183, type: 3}
+  Multiplier: 10

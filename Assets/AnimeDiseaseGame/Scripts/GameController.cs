@@ -1,8 +1,6 @@
-﻿using System;
-using GameJamStarterKit;
+﻿using GameJamStarterKit;
 using GameJamStarterKit.HealthSystem;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace AnimeDiseaseGame
 {
@@ -10,6 +8,7 @@ namespace AnimeDiseaseGame
     {
         private BodySingleton _body;
         private DungeonGenerator _dungeonGenerator;
+        public int ActiveEnemies = 0;
 
         private void Start()
         {
@@ -17,6 +16,7 @@ namespace AnimeDiseaseGame
             _dungeonGenerator = DungeonGenerator.Instance;
 
             _body.HealthComponent.OnHealthEmpty.AddListener(LoseGame);
+            BGMController.Instance.PlaySong("Calm");
         }
 
         public void RegisterCharacterHealth(HealthComponent characterHealth)
@@ -24,9 +24,14 @@ namespace AnimeDiseaseGame
             characterHealth.OnHealthEmpty.AddListener(LoseGame);
         }
 
-        private void LoseGame()
+        public void LoseGame()
         {
             Debug.LogError("damn u lose");
+        }
+
+        public void WinGame()
+        {
+            Debug.LogError("you're winner");
         }
 
         private void Update()
@@ -35,11 +40,22 @@ namespace AnimeDiseaseGame
             {
                 RestartGame();
             }
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                BGMController.Instance.PlaySong("Combat");
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                BGMController.Instance.PlaySong("Calm");
+            }
         }
 
         private void RestartGame()
         {
             KItSceneManager.ReloadCurrentScene();
+            BGMController.Instance.PlaySong("Calm");
         }
     }
 }

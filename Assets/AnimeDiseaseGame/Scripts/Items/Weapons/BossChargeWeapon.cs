@@ -23,13 +23,13 @@ namespace AnimeDiseaseGame
             
             yield return new WaitForSeconds(2f);
             
-            animator.SetTrigger("ChargeStop");
+            animator.SetTrigger("ChargeEnd");
             var rb = GetComponentInParent<Rigidbody2D>();
             var enemy = GetComponentInParent<Enemy>();
             var moveSpeed = enemy.MoveSpeed;
-            enemy.MoveSpeed = 100f;
-            rb.AddForce(SavedDirection * 100f, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(1f);
+            enemy.MoveSpeed = 200f;
+            rb.AddForce(SavedDirection * 200f, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.7f);
             enemy.MoveSpeed = moveSpeed;
             HasFinishedFiring = true;
         }

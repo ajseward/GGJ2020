@@ -11,6 +11,9 @@ namespace AnimeDiseaseGame
         public float MinRange = 10f;
         public float MoveSpeed = 4f;
         public bool ShouldTrack = true;
+        public bool IsAwake => !_asleep;
+
+        protected bool RotateTowards = true;
         private bool _asleep = true;
         private Rigidbody2D _rb;
         private HealthComponent _healthComponent;
@@ -56,7 +59,8 @@ namespace AnimeDiseaseGame
             }
 
             var myTransform = transform;
-            myTransform.up = (Vector2)myTransform.position.DirectionTo(Target.transform.position);
+            if (RotateTowards)
+                myTransform.up = (Vector2)myTransform.position.DirectionTo(Target.transform.position);
 
             if (Vector2.Distance(myTransform.position, Target.transform.position) > MaxRange)
             {

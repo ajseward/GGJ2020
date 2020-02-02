@@ -16,6 +16,12 @@ namespace AnimeDiseaseGame
                 for (var i = 0; i < count; ++i)
                 {
                     var hit = hits[i];
+                    var team = hit.collider.GetComponent<TeamMonoBehaviour>();
+                    if (team != null)
+                    {
+                        if (team.Team == Team)
+                            continue;
+                    }
                     hit.collider.gameObject.Damage(Damage);
                 }
             }

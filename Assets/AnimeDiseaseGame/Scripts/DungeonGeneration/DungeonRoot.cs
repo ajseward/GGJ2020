@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using GameJamStarterKit;
+using GameJamStarterKit.HealthSystem;
+using UnityEngine;
 
 namespace AnimeDiseaseGame
 {
@@ -99,6 +102,46 @@ namespace AnimeDiseaseGame
         public void Remove()
         {
             Destroy(gameObject);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.HasComponent<CharacterControl>())
+            {
+                var collider = GetComponent<Collider2D>();
+                var hits = Physics2D.BoxCastAll(collider.offset + (Vector2)transform.position, collider.GetSize(), 0f, Vector2.up);
+                if (hits.Any(hit => hit.transform.gameObject.HasComponent<Boss>()))
+                {
+                    var bgm = BGMController.Instance;
+                    bgm.PlaySong("Boss");
+                }
+                else if (hits.Any(hit => hit.transform.gameObject.HasComponent<Enemy>()))
+                {
+                    var bgm = BGMController.Instance;
+                    bgm.PlaySong("Combat");
+                }
+                foreach (var hit in hits)
+                {
+                    if (hit.transform.gameObject.HasComponent<CharacterControl>())
+                        continue;
+                    var enemy = hit.transform.gameObject.GetComponent<Enemy>();
+                    if (enemy != null && !enemy.IsAwake)
+                    {
+                        enemy.WakeUp();
+                        var health = enemy.GetComponent<HealthComponent>();
+                        GameController.Instance.ActiveEnemies += 1;
+                        health.OnHealthEmpty.AddListener(() =>
+                        {
+                            GameController.Instance.ActiveEnemies -= 1;
+                            if (GameController.Instance.ActiveEnemies <= 0)
+                            {
+                                var bgm = BGMController.Instance;
+                                bgm.PlaySong("Calm");
+                            }
+                        });
+                    }
+                }
+            }
         }
     }
 }

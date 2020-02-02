@@ -27,7 +27,7 @@ namespace AnimeDiseaseGame
             yield return new WaitForSeconds(2f);
             var proj = Instantiate(BeamProjectile, transform.position, Quaternion.identity);
             proj.transform.up = SavedDirection;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
             proj.Fire();
             animator.SetTrigger("BeamEnd");
 

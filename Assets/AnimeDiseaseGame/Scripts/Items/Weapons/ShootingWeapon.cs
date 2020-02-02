@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using GameJamStarterKit.Modifiers;
+using UnityEngine;
 
 namespace AnimeDiseaseGame
 {
     public class ShootingWeapon : Weapon
     {
         public Projectile Projectile;
+        public float ProjectileSpeedMultiplier = 1f;
         protected override void Fire_Implementation(Vector2 direction)
         {
             var myTransform = transform;
@@ -16,7 +18,7 @@ namespace AnimeDiseaseGame
             var proj = go.GetComponent<Projectile>();
 
             proj.Team = Team;
-
+            ((StraightTravelProjectile) proj).Speed.AddModifier(new ValueModifier<float>(f => f * ProjectileSpeedMultiplier));
             proj.Fire();
         }
     }

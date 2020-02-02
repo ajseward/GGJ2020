@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9280dd14b211408cb6e4b418d37055ea, type: 3}
+  m_Name: SizeUpgrade
+  m_EditorClassIdentifier: 
+  Description: fitness is my passion
+  Sprite: {fileID: 2091466680157624191, guid: 37fae90f7828abf4ba55834728e10183, type: 3}
+  Size: 2
+  HealthIncrease: 2

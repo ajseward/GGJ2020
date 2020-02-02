@@ -7,7 +7,7 @@ namespace AnimeDiseaseGame
     {
         public override void OnHitOtherTeam(Collider2D other)
         {
-            other.gameObject.Damage(1);
+            other.gameObject.Damage(Damage);
         }
 
         public override void Fire()
