@@ -1,5 +1,4 @@
-﻿using System;
-using GameJamStarterKit;
+﻿using GameJamStarterKit;
 using GameJamStarterKit.HealthSystem;
 using UnityEngine;
 
@@ -11,6 +10,7 @@ namespace AnimeDiseaseGame
         public float MaxRange = 20f;
         public float MinRange = 10f;
         public float MoveSpeed = 4f;
+        public bool ShouldTrack = true;
         private bool _asleep = true;
         private Rigidbody2D _rb;
         private HealthComponent _healthComponent;
@@ -45,6 +45,9 @@ namespace AnimeDiseaseGame
         protected virtual void Update()
         {
             if (_asleep)
+                return;
+
+            if (!ShouldTrack)
                 return;
 
             if (Target == null)

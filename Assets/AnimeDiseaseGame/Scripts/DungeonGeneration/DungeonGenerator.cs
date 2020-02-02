@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GameJamStarterKit;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Tilemaps;
 
 namespace AnimeDiseaseGame
 {
@@ -20,36 +17,6 @@ namespace AnimeDiseaseGame
 
         private void Start()
         {
-            GenerateStartTile();
-            /*for (var i = 0; i < 10; ++i)
-            {
-                var queue = new Queue<Transform>();
-                queue.Enqueue(RootTile.transform);
-                while (queue.Count > 0)
-                {
-                    var t = queue.Dequeue();
-                    foreach (Transform child in t)
-                    {
-                        queue.Enqueue(child);
-                    }
-                    
-                    var tile = t.GetComponent<DungeonRoot>();
-                    if (tile == null)
-                        continue;
-
-                    foreach (TileType tileType in Enum.GetValues(typeof(TileType)))
-                    {
-                        if (tileType == TileType.None)
-                            continue;
-                        
-                        if (tile.HasExit(tileType))
-                        {
-                            GenerateTile(tileType, tile.GetExit(tileType));
-                            yield return null;
-                        }
-                    }
-                }
-            }*/
         }
 
         public void WipeMap()
@@ -65,31 +32,17 @@ namespace AnimeDiseaseGame
             }
         }
 
-        private void GenerateStartTile()
+        private DungeonRoot GenerateStartTile()
         {
             var go = Instantiate(RootTile.gameObject, Vector3.zero, Quaternion.identity);
             RootTile = go.GetComponent<DungeonRoot>();
-            if (RootTile.UpExit)
-            {
-                _regressDirection = TileType.Down;
-                GenerateTile(TileType.Up, RootTile.UpExit);
-            }
-            else if (RootTile.DownExit)
-            {
-                _regressDirection = TileType.Up;
-                GenerateTile(TileType.Down, RootTile.DownExit);
-            }
-            else if (RootTile.LeftExit)
-            {
-                _regressDirection = TileType.Right;
-                GenerateTile(TileType.Left, RootTile.LeftExit);
-            }
+            
+            if (!RootTile.UpExit)
+                return null;
+            
+            _regressDirection = TileType.Down;
+            return GenerateTile(TileType.Up, RootTile.UpExit);
 
-            else if (RootTile.RightExit)
-            {
-                _regressDirection = TileType.Left;
-                GenerateTile(TileType.Right, RootTile.RightExit);
-            }
         }
 
         public DungeonRoot GenerateTile(TileType direction, Transform position)

@@ -1,7 +1,4 @@
-﻿using System;
-using GameJamStarterKit;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 namespace AnimeDiseaseGame
 {
