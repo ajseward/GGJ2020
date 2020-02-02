@@ -45,6 +45,8 @@ namespace AnimeDiseaseGame
             _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, MoveSpeed.ModifiedValue);
             if (ChildRenderer != null)
             {
+                if (_rb.velocity.normalized == Vector2.zero)
+                    return;
                 ChildRenderer.up = _rb.velocity.normalized;
             }
         }

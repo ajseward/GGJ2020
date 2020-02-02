@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Description: dummy quicc
   Sprite: {fileID: -8559467107966762825, guid: 8febda07067468f4e911ec73547c7d75, type: 3}
-  Multiplier: 50
+  Multiplier: 1000

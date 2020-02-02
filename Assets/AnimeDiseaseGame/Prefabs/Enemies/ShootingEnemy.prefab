@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.03141593
+  m_Mass: 18.398424
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -140,7 +140,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 2.42
 --- !u!114 &4000720480430283856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,13 @@ MonoBehaviour:
   CurrentHealth: 0
   ClampDamageAndHealing: 1
   CanExceedMaximumHealth: 0
+  OnHealthLost:
+    m_PersistentCalls:
+      m_Calls: []
   OnHealthEmpty:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthGained:
     m_PersistentCalls:
       m_Calls: []
 --- !u!95 &1030459768838909135

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Description: xtra quicc
   Sprite: {fileID: -6466340873583167553, guid: 8febda07067468f4e911ec73547c7d75, type: 3}
-  Multiplier: 10
+  Multiplier: 5

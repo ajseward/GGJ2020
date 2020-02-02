@@ -42,7 +42,7 @@ namespace AnimeDiseaseGame
             _asleep = false;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (_asleep)
                 return;
@@ -58,6 +58,7 @@ namespace AnimeDiseaseGame
             if (Vector2.Distance(myTransform.position, Target.transform.position) > MaxRange)
             {
                 _moveDir = myTransform.position.DirectionTo(Target.transform.position);
+                OnChase();
             }
             else if (Vector2.Distance(myTransform.position, Target.transform.position) < MinRange)
             {
@@ -76,6 +77,7 @@ namespace AnimeDiseaseGame
             _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, MoveSpeed);
         }
 
+        protected virtual void OnChase() { }
         public abstract void Attack();
         
         public abstract GameObject GetTarget();

@@ -71,24 +71,24 @@ namespace AnimeDiseaseGame
             RootTile = go.GetComponent<DungeonRoot>();
             if (RootTile.UpExit)
             {
-                GenerateTile(TileType.Up, RootTile.UpExit);
                 _regressDirection = TileType.Down;
+                GenerateTile(TileType.Up, RootTile.UpExit);
             }
             else if (RootTile.DownExit)
             {
-                GenerateTile(TileType.Down, RootTile.DownExit);
                 _regressDirection = TileType.Up;
+                GenerateTile(TileType.Down, RootTile.DownExit);
             }
             else if (RootTile.LeftExit)
             {
-                GenerateTile(TileType.Left, RootTile.LeftExit);
                 _regressDirection = TileType.Right;
+                GenerateTile(TileType.Left, RootTile.LeftExit);
             }
 
             else if (RootTile.RightExit)
             {
-                GenerateTile(TileType.Right, RootTile.RightExit);
                 _regressDirection = TileType.Left;
+                GenerateTile(TileType.Right, RootTile.RightExit);
             }
         }
 
@@ -144,9 +144,9 @@ namespace AnimeDiseaseGame
                     dir = Vector2.down;
                     break;
             }
-            var hits = Physics2D.BoxCastNonAlloc(origin.position, Vector2.one / 2f, 0f, dir, new RaycastHit2D[1], 10f);
+            var hits = Physics2D.BoxCastNonAlloc(origin.position, Vector2.one / 2f, 0f, dir, new RaycastHit2D[2], 10f);
 
-            return hits > 0;
+            return hits > 1;
         }
     }
 }
