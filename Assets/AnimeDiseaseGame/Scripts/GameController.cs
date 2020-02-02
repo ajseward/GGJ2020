@@ -16,7 +16,6 @@ namespace AnimeDiseaseGame
             _dungeonGenerator = DungeonGenerator.Instance;
 
             _body.HealthComponent.OnHealthEmpty.AddListener(LoseGame);
-            BGMController.Instance.PlaySong("Calm");
         }
 
         public void RegisterCharacterHealth(HealthComponent characterHealth)
@@ -26,12 +25,18 @@ namespace AnimeDiseaseGame
 
         public void LoseGame()
         {
-            Debug.LogError("damn u lose");
+            if (GameView.Instance is GameView gv)
+            {
+                StartCoroutine(gv.ShowThanks());
+            }
         }
 
         public void WinGame()
         {
-            Debug.LogError("you're winner");
+            if (GameView.Instance is GameView gv)
+            {
+               StartCoroutine(gv.ShowThanks());
+            }
         }
 
         private void Update()
@@ -52,7 +57,7 @@ namespace AnimeDiseaseGame
             }
         }
 
-        private void RestartGame()
+        public void RestartGame()
         {
             KItSceneManager.ReloadCurrentScene();
             BGMController.Instance.PlaySong("Calm");

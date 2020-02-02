@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/AnimeDiseaseGame/Scenes/KitMainMenu.unity
+    guid: fea9167ae4f2ebb4095d50d15e21a260
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 72b0162f6281b1c4f81273ee12885e49
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: acd82d48445913149ab97e5b824f8385,
       type: 2}

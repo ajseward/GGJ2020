@@ -185,7 +185,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 35
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -336,12 +336,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LagLocation: 1
-  LagRotation: 1
-  LocationLagSpeed: 2
+  LagRotation: 0
+  LocationLagSpeed: 10
   RotationLagSpeed: 3
-  MaxLocationDistance: 5
+  MaxLocationDistance: 100
   MaxRotationAngle: 30
-  ProbeDistance: 5
+  ProbeDistance: 6
   ProbeLayer:
     serializedVersion: 2
     m_Bits: 0

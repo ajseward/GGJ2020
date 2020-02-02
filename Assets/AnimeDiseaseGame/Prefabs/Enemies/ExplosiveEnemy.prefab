@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4889566237846249968}
   - component: {fileID: 3198279807683360554}
   - component: {fileID: 9056873079428587990}
+  - component: {fileID: 2461120795352305703}
   m_Layer: 0
   m_Name: ExplosiveEnemy
   m_TagString: Untagged
@@ -143,6 +144,7 @@ MonoBehaviour:
   MaxRange: 9
   MinRange: 0
   MoveSpeed: 6
+  ShouldTrack: 1
   Weapon: {fileID: 8424913177437100987}
   ChargeUpCount: 3
 --- !u!58 &9056873079428587990
@@ -161,6 +163,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.2
+--- !u!114 &2461120795352305703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8039655100318934817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b903d2d7ea0884da361d12bdd308c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeakAgainst: []
+  StrongAgainst: []
+  MaximumHealth: 2
+  CurrentHealth: 0
+  ClampDamageAndHealing: 1
+  CanExceedMaximumHealth: 0
+  OnHealthLost:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthEmpty:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthGained:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &5516696666815643065
 PrefabInstance:
   m_ObjectHideFlags: 0

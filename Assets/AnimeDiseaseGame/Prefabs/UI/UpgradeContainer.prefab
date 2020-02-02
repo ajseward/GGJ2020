@@ -79,8 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotentialUpgrades:
   - {fileID: 11400000, guid: cbfadf7bff9537f449c04023bb891321, type: 2}
-  - {fileID: 11400000, guid: cbfadf7bff9537f449c04023bb891321, type: 2}
-  - {fileID: 11400000, guid: cbfadf7bff9537f449c04023bb891321, type: 2}
+  - {fileID: 11400000, guid: 00e1d237c491c7f4eb4142b6e3f6b07f, type: 2}
+  - {fileID: 11400000, guid: 9d205c89bcb44c243b4cce7c129ee378, type: 2}
   Container: {fileID: 3991547402502996545}
 --- !u!1001 &2025089454616336650
 PrefabInstance:

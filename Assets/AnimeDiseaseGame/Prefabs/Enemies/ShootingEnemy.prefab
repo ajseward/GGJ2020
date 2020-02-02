@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeakAgainst: []
   StrongAgainst: []
-  MaximumHealth: 1
+  MaximumHealth: 4
   CurrentHealth: 0
   ClampDamageAndHealing: 1
   CanExceedMaximumHealth: 0

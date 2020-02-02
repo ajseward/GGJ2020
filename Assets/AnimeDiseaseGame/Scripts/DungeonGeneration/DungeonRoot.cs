@@ -2,6 +2,7 @@
 using GameJamStarterKit;
 using GameJamStarterKit.HealthSystem;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace AnimeDiseaseGame
 {
@@ -11,6 +12,9 @@ namespace AnimeDiseaseGame
         public Transform LeftExit;
         public Transform RightExit;
         public Transform DownExit;
+
+        public UnityEvent OnFirstEnter = new UnityEvent();
+        private bool _onFirstEnter;
 
         public TileType GetTileType()
         {
@@ -106,10 +110,17 @@ namespace AnimeDiseaseGame
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+
             if (other.HasComponent<CharacterControl>())
             {
+                if (!_onFirstEnter)
+                {
+                    _onFirstEnter = true;
+                    OnFirstEnter.Invoke();
+                }
+                
                 var collider = GetComponent<Collider2D>();
-                var hits = Physics2D.BoxCastAll(collider.offset + (Vector2)transform.position, collider.GetSize(), 0f, Vector2.up);
+                var hits = Physics2D.BoxCastAll(collider.offset + (Vector2)transform.position, collider.GetSize(), 0f, Vector3.back);
                 if (hits.Any(hit => hit.transform.gameObject.HasComponent<Boss>()))
                 {
                     var bgm = BGMController.Instance;

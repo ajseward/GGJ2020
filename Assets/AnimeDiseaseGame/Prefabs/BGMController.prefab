@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &246929509014994849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246929509014994877}
+  - component: {fileID: 246929509014994879}
+  - component: {fileID: 246929509014994848}
+  m_Layer: 0
+  m_Name: BGMController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246929509014994877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246929509014994849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4408712, y: -28.381996, z: -5.287415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &246929509014994879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246929509014994849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef59093993648f38e930b7405ba649e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClipCollection:
+    Clips: []
+    RandomizedCollection: 0
+  PlayOnStart: 0
+  FadeIn: 0
+  FadeInDuration: 2
+  AlwaysFadeIn: 0
+  FadeOut: 0
+  FadeOutDuration: 2
+  CrossFade: 1
+  CrossFadeDuration: 2
+--- !u!114 &246929509014994848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246929509014994849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98cb7ff64ef94bc989e37d19779b69d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Songs:
+  - Name: Calm
+    Clips:
+      Clips:
+      - {fileID: 8300000, guid: 9d75e48c912dfc740963c8580abcded8, type: 3}
+      RandomizedCollection: 0
+  - Name: Combat
+    Clips:
+      Clips:
+      - {fileID: 8300000, guid: ae5c9cec683d5634bbe9174f4ed1775d, type: 3}
+      - {fileID: 8300000, guid: 4534f3fac468c634e9296f7b87d05b5b, type: 3}
+      RandomizedCollection: 1
+  - Name: Boss
+    Clips:
+      Clips:
+      - {fileID: 8300000, guid: 94b923507c631694cbcec739450681f4, type: 3}
+      RandomizedCollection: 0
+  - Name: Menu
+    Clips:
+      Clips:
+      - {fileID: 8300000, guid: c2d48906fb4476c46a4fa8106b0bde4c, type: 3}
+      RandomizedCollection: 0

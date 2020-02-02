@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using GameJamStarterKit.UI;
 using UnityEngine;
 
@@ -7,6 +7,7 @@ namespace AnimeDiseaseGame
     public class GameView : View
     {
         public UpgradeChoiceManager UpgradeManager;
+        public GameObject ThanksForPlaying;
 
         private void Start()
         {
@@ -15,8 +16,8 @@ namespace AnimeDiseaseGame
 
         public void ShowUpgradeChoice()
         {
-            UpgradeManager.transform.SetAsLastSibling();
             UpgradeManager.gameObject.SetActive(true);
+            UpgradeManager.transform.SetAsLastSibling();
             ShowInputBlockerBehind(UpgradeManager.transform);
             UpgradeManager.ShowUpgradeChoices();
         }
@@ -25,6 +26,16 @@ namespace AnimeDiseaseGame
         {
             UpgradeManager.gameObject.SetActive(false);
             HideInputBlocker();
+        }
+
+        public IEnumerator ShowThanks()
+        {
+            ThanksForPlaying.SetActive(true);
+            ThanksForPlaying.transform.SetAsLastSibling();
+            ShowInputBlockerBehind(ThanksForPlaying.transform);
+            yield return new WaitForSeconds(5f);
+            
+            GameController.Instance.RestartGame();
         }
     }
 }

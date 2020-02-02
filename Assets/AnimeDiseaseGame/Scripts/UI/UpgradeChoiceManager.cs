@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using GameJamStarterKit;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -46,6 +45,12 @@ namespace AnimeDiseaseGame
             {
                 view.HideUpgradeChoice();
             }
+        }
+
+        public void Event_StartUpgrade()
+        {
+            var gv = GameView.Instance as GameView;
+            gv.ShowUpgradeChoice();
         }
     }
 }

@@ -43,6 +43,7 @@ namespace AnimeDiseaseGame
         public void WakeUp()
         {
             _asleep = false;
+            _healthComponent.OnHealthEmpty.AddListener(() => GameObject.FindWithTag("Player").Heal(1));
         }
 
         protected virtual void Update()

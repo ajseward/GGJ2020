@@ -15,6 +15,7 @@ namespace AnimeDiseaseGame
         private void Start()
         {
             RotateTowards = false;
+            GetComponent<HealthComponent>().OnHealthEmpty.AddListener(() => ((GameController)GameController.Instance).WinGame());
         }
 
         private void OnTriggerEnter2D(Collider2D other)

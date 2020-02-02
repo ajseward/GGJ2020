@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1367074762020485314}
   - component: {fileID: 2403508807711000083}
   - component: {fileID: 7932423082939920940}
+  - component: {fileID: 7421523095927195600}
   m_Layer: 0
   m_Name: Worm
   m_TagString: Untagged
@@ -161,6 +162,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &7421523095927195600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204049302296235073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b903d2d7ea0884da361d12bdd308c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeakAgainst: []
+  StrongAgainst: []
+  MaximumHealth: 4
+  CurrentHealth: 0
+  ClampDamageAndHealing: 1
+  CanExceedMaximumHealth: 0
+  OnHealthLost:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthEmpty:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthGained:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1817835088175869787
 PrefabInstance:
   m_ObjectHideFlags: 0
