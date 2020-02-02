@@ -40,7 +40,7 @@ namespace AnimeDiseaseGame
         private void DoMovement()
         {
             var move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            move = Vector2.ClampMagnitude(move, 1);
+            move = Vector2.ClampMagnitude(move, 1) * MoveSpeed.ModifiedValue;
             _rb.AddForce(move, ForceMode2D.Impulse);
             _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, MoveSpeed.ModifiedValue);
             if (ChildRenderer != null)

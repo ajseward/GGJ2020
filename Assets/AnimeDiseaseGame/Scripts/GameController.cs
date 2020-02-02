@@ -2,6 +2,7 @@
 using GameJamStarterKit;
 using GameJamStarterKit.HealthSystem;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace AnimeDiseaseGame
 {
@@ -26,6 +27,14 @@ namespace AnimeDiseaseGame
         private void LoseGame()
         {
             Debug.LogError("damn u lose");
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                RestartGame();
+            }
         }
 
         private void RestartGame()

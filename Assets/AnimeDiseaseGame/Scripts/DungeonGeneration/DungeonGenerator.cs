@@ -96,8 +96,12 @@ namespace AnimeDiseaseGame
         {
             if (position.childCount > 0)
                 return null;
-            
-            var tiles = DungeonTiles.Where(dt => dt.HasExit(DungeonUtility.GetOppositeTile(direction)));
+            var enterance = DungeonUtility.GetOppositeTile(direction);
+            var tiles = DungeonTiles.Where(dt => dt.HasExit(enterance));
+            if (enterance != _regressDirection)    
+            {
+                tiles = tiles.Where(dt => !dt.HasExit(_regressDirection));
+            }
 
             foreach (TileType tileType in Enum.GetValues(typeof(TileType)))
             {
